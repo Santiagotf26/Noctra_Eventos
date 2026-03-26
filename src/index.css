@@ -4,13 +4,22 @@
 
 @layer base {
   body {
-    @apply bg-darker text-gray-100 font-sans antialiased overflow-x-hidden;
+    @apply bg-darker text-gray-200 font-sans antialiased overflow-x-hidden;
   }
 }
 
 @layer utilities {
   .glass {
     @apply bg-white/5 backdrop-blur-md border border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.1)];
+  }
+  .liquid-glass-text {
+    @apply text-transparent bg-clip-text relative;
+    background-image: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.8) 50%, rgba(255,255,255,1) 100%);
+    -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.4));
+  }
+  .aurora-bg {
+    @apply absolute mix-blend-screen filter blur-[120px] rounded-full opacity-60;
   }
   .glass-card {
     @apply glass rounded-2xl transition hover:border-white/20 hover:bg-white/10;
@@ -22,15 +31,15 @@
 
 /* Scrollbar Customization */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px; /* Sleeker scrollbar */
 }
 ::-webkit-scrollbar-track {
-  background: #070709; 
+  background: #090211; 
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2a35; 
+  background: #2a1b3d; 
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #6B21A8; 
+  background: #6D28D9; 
 }

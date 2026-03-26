@@ -2,16 +2,16 @@ import { Mail, MapPin, Phone } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="glass border-t border-white/10 pt-16 pb-8 relative z-20">
+    <footer className="glass border-t border-white/5 pt-20 pb-10 relative z-20">
       <div className="container mx-auto px-6 md:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
           
           {/* Brand Info */}
           <div className="lg:col-span-1">
             <a href="#inicio" className="text-2xl font-bold tracking-tighter mb-4 inline-block">
-              Fole<span className="text-primary">Eventos</span>
+              <span className="text-2xl font-syne font-bold tracking-tighter liquid-glass-text">Noctra</span>
             </a>
-            <p className="text-gray-400 mb-6 font-medium">
+            <p className="text-gray-300 font-light leading-relaxed mb-6 tracking-wide">
               Transformando tus momentos especiales en experiencias inolvidables a través de música, luz y buen ambiente.
             </p>
             <div className="flex space-x-4">
@@ -29,7 +29,7 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h4 className="text-white font-semibold text-lg mb-6 tracking-wide">Enlaces Rápidos</h4>
+            <h4 className="text-white font-display font-bold text-lg mb-6 tracking-widest uppercase">Enlaces Rápidos</h4>
             <ul className="space-y-4">
               <li><a href="#inicio" className="text-gray-400 hover:text-white transition-colors">Inicio</a></li>
               <li><a href="#servicios" className="text-gray-400 hover:text-white transition-colors">Nuestros Servicios</a></li>
@@ -40,7 +40,7 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="text-white font-semibold text-lg mb-6 tracking-wide">Contacto</h4>
+            <h4 className="text-white font-display font-bold text-lg mb-6 tracking-widest uppercase">Contacto</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-primary mt-0.5" />
@@ -53,7 +53,7 @@ const Footer = () => {
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-primary mt-0.5" />
                 <span className="text-gray-400 hover:text-white transition-colors cursor-pointer">
-                  contacto@foleventos.com
+                  contacto@noctra.com
                 </span>
               </li>
               <li className="flex items-start gap-3">
@@ -67,7 +67,7 @@ const Footer = () => {
 
           {/* Newsletter */}
           <div>
-            <h4 className="text-white font-semibold text-lg mb-6 tracking-wide">Boletín</h4>
+            <h4 className="text-white font-display font-bold text-lg mb-6 tracking-widest uppercase">Boletín</h4>
             <p className="text-gray-400 mb-4">Suscríbete para recibir ofertas y novedades exclusivas.</p>
             <form className="flex">
               <input 
@@ -87,8 +87,8 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
-          <p>&copy; {new Date().getFullYear()} Fole Eventos. Todos los derechos reservados.</p>
+        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center text-gray-500 font-light text-sm tracking-wide">
+          <p>&copy; {new Date().getFullYear()} Noctra. Todos los derechos reservados.</p>
           <div className="flex space-x-4 mt-4 md:mt-0">
             <a href="#" className="hover:text-gray-300">Términos y condiciones</a>
             <a href="#" className="hover:text-gray-300">Política de Privacidad</a>

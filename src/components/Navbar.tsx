@@ -28,8 +28,8 @@ const Navbar = () => {
     >
       <div className="container mx-auto px-6 md:px-12 flex justify-between items-center">
         {/* Logo */}
-        <a href="#inicio" className="text-2xl font-bold tracking-tighter">
-          Fole<span className="text-primary">Eventos</span>
+        <a href="#inicio" className="text-3xl font-syne font-bold tracking-tighter liquid-glass-text">
+          Noctra
         </a>
 
         {/* Desktop Menu */}
@@ -47,7 +47,7 @@ const Navbar = () => {
             href="https://wa.me/573114971131"
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-2 rounded-full bg-gradient-to-r from-primary to-accent text-white font-semibold transition hover:scale-105 hover:shadow-[0_0_20px_rgba(107,33,168,0.5)]"
+            className="px-6 py-2 rounded-full border border-white/10 bg-gradient-to-r from-primary/80 to-accent/80 text-white font-medium tracking-wide transition-all hover:scale-105 hover:shadow-[0_0_20px_rgba(109,40,217,0.5)] hover:border-white/30"
           >
             Contacto
           </a>
@@ -83,7 +83,7 @@ const Navbar = () => {
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => setIsOpen(false)}
-          className="px-8 py-3 rounded-full bg-gradient-to-r from-primary to-accent text-white font-semibold"
+          className="px-8 py-3 rounded-full border border-white/10 bg-gradient-to-r from-primary/80 to-accent/80 text-white font-medium tracking-wide"
         >
           Contáctanos
         </a>

@@ -11,18 +11,18 @@ const images = [
 
 const Gallery = () => {
   return (
-    <section id="galeria" className="py-24 bg-dark">
+    <section id="galeria" className="py-32 bg-dark">
       <div className="container mx-auto px-6 md:px-12">
-        <div className="text-center mb-16">
+        <div className="text-center mb-20">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-bold mb-4"
+            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 tracking-tight"
           >
             Nuestros <span className="text-gradient">Momentos</span>
           </motion.h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
+          <p className="text-gray-300 max-w-2xl mx-auto text-lg font-light tracking-wide">
             Una mirada a las experiencias inolvidables que hemos creado para nuestros clientes.
           </p>
         </div>
@@ -42,12 +42,12 @@ const Gallery = () => {
               <div className="aspect-[4/3] w-full">
                 <img 
                   src={src} 
-                  alt={`Galería Fole Eventos ${idx + 1}`} 
+                  alt={`Galería Noctra ${idx + 1}`} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>
-              <div className="absolute inset-0 bg-gradient-to-t from-darker via-transparent opacity-0 group-hover:opacity-80 transition-opacity duration-300 flex items-end p-6">
-                <p className="text-white font-semibold text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+              <div className="absolute inset-0 bg-gradient-to-t from-darker via-darker/20 to-transparent opacity-0 group-hover:opacity-90 transition-opacity duration-500 flex items-end p-8">
+                <p className="text-white font-display text-xl tracking-wide font-medium translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                   Ver evento
                 </p>
               </div>
