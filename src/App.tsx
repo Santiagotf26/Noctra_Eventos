@@ -1,16 +1,27 @@
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
-import BrandCarousel from './components/BrandCarousel';
+import EventTypes from './components/EventTypes';
 import Services from './components/Services';
 import About from './components/About';
 import Gallery from './components/Gallery';
 import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
-  // Smooth scroll implementation
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
   useEffect(() => {
+    // Revisar preferencia guardada (por defecto modo claro como solicitó el usuario)
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      setIsDarkMode(true);
+      document.documentElement.classList.add('dark');
+    } else {
+      setIsDarkMode(false);
+      document.documentElement.classList.remove('dark');
+    }
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', (e) => {
         e.preventDefault();
@@ -18,27 +29,35 @@ function App() {
         if (targetId && targetId !== '#') {
           const targetElement = document.querySelector(targetId);
           if (targetElement) {
-            targetElement.scrollIntoView({
-              behavior: 'smooth'
-            });
+            targetElement.scrollIntoView({ behavior: 'smooth' });
           }
         }
       });
     });
   }, []);
 
+  const toggleTheme = () => {
+    if (isDarkMode) {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+      setIsDarkMode(false);
+    } else {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+      setIsDarkMode(true);
+    }
+  };
+
   return (
-    <div className="font-sans antialiased bg-darker text-gray-100 min-h-screen">
-      <Navbar />
-      
+    <div className="font-sans antialiased bg-gray-50 dark:bg-darker text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-500">
+      <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <main>
         <Hero />
-        <BrandCarousel />
-        <Services />
+        <EventTypes />
         <About />
+        <Services />
         <Gallery />
       </main>
-
       <Footer />
       <FloatingWhatsApp />
     </div>
