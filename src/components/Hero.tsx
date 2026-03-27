@@ -13,16 +13,16 @@ const Hero = () => {
     <section id="inicio" ref={containerRef} className="relative min-h-[100vh] flex flex-col items-center justify-center overflow-hidden bg-white dark:bg-darker transition-colors duration-500">
       
       {/* Texto Scrolling Fondo - Mueve al hacer scroll */}
-      <div className="absolute inset-0 z-0 flex flex-col justify-center overflow-hidden pointer-events-none opacity-[0.03] dark:opacity-[0.04]">
+      <div className="absolute inset-0 z-0 flex flex-col justify-center overflow-hidden pointer-events-none opacity-[0.03] dark:opacity-[0.04] will-change-transform">
         <motion.div style={{ x: textX1 }} className="whitespace-nowrap flex leading-none">
-          {Array(10).fill('EVENTOS ').map((text, i) => (
+          {Array(3).fill('EVENTOS ').map((text, i) => (
             <span key={i} className="text-[120px] md:text-[200px] lg:text-[280px] font-display font-bold text-gray-900 dark:text-white px-4">
               {text}
             </span>
           ))}
         </motion.div>
         <motion.div style={{ x: textX2 }} className="whitespace-nowrap flex leading-none -ml-[300px]">
-          {Array(10).fill('EVENTOS ').map((text, i) => (
+          {Array(3).fill('EVENTOS ').map((text, i) => (
             <span key={i} className="text-[120px] md:text-[200px] lg:text-[280px] font-display font-bold text-gray-900 dark:text-white px-4 outline-text">
               {text}
             </span>

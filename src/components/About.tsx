@@ -7,21 +7,21 @@ const carouselImages = [
     id: 1,
     title: "BODAS INOLVIDABLES",
     desc: "Iluminación cálida, pistas de baile iluminadas y sonorización perfecta.",
-    img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+    img: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&fm=webp&q=60",
     tag: "MATRIMONIOS"
   },
   {
     id: 2,
     title: "15 AÑOS ÉPICOS",
     desc: "Atmósferas vibrantes, láseres juveniles y el mejor equipamiento para fiestas.",
-    img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+    img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&fm=webp&q=60",
     tag: "CELEBRACIONES"
   },
   {
     id: 3,
     title: "PRODUCCIÓN CORPORATIVA",
     desc: "Presentaciones de alto impacto con pantallas LED y audio nítido.",
-    img: "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80",
+    img: "https://images.unsplash.com/photo-1511578314322-379afb476865?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&fm=webp&q=60",
     tag: "EMPRESAS"
   }
 ];
@@ -91,6 +91,7 @@ const About = () => {
               <img 
                 src={carouselImages[currentIndex].img} 
                 alt={carouselImages[currentIndex].title} 
+                loading="lazy"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-gray-900/90 via-gray-900/30 to-transparent" />

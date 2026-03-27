@@ -12,7 +12,7 @@ const services = [
       "Iluminación DMX Sincronizada",
       "Soporte In Situ Ininterrumpido"
     ],
-    img: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&fm=webp&q=60",
     reverse: false
   },
   {
@@ -26,7 +26,7 @@ const services = [
       "Efectos CO2 y Pirotecnia Fría",
       "Afinación Acústica del Recinto"
     ],
-    img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&q=80",
+    img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&fm=webp&q=60",
     reverse: true
   }
 ];
@@ -122,7 +122,7 @@ const Services = () => {
                 className="aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl border-2 border-gray-100 dark:border-white/5 group-hover:border-primary/30 transition-colors duration-500 relative"
               >
                 <div className="absolute inset-0 bg-primary/10 mix-blend-overlay group-hover:bg-transparent transition-colors duration-1000 z-10" />
-                <img src={svc.img} alt="Técnica" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out saturate-50 group-hover:saturate-100" />
+                <img src={svc.img} alt="Técnica" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out saturate-50 group-hover:saturate-100" />
               </motion.div>
             </div>
           </motion.div>

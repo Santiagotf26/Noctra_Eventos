@@ -5,22 +5,22 @@ const productions = [
   {
     title: "Bodas y Matrimonios",
     desc: "Sistemas de iluminación cálida, sonido de alta fidelidad y logística impecable para el día más importante.",
-    img: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+    img: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&fm=webp&q=60"
   },
   {
     title: "Fiestas de 15 Años",
     desc: "Efectos especiales, láseres, y atmósferas juveniles vibrantes con equipos de nivel discoteca/concierto.",
-    img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+    img: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&fm=webp&q=60"
   },
   {
     title: "Eventos Corporativos",
     desc: "Producción ejecutiva, pantallas LED finas y microfonía profesional para lanzamientos y conferencias.",
-    img: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+    img: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&fm=webp&q=60"
   },
   {
     title: "Cumpleaños y Privados",
     desc: "Celebraciones a medida, escenarios temáticos y música en vivo con producción audiovisual premium.",
-    img: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+    img: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&fm=webp&q=60"
   }
 ];
 
@@ -85,6 +85,7 @@ const EventTypes = () => {
                 <img 
                   src={item.img} 
                   alt={item.title}
+                  loading="lazy"
                   className="w-full h-full object-cover absolute inset-0 group-hover:scale-110 transition-transform duration-1000"
                 />
               </div>
