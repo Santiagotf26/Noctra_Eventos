@@ -30,7 +30,7 @@ const Team = () => {
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="text-4xl md:text-6xl font-display font-black tracking-tighter uppercase mb-4 drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]"
+            className="text-3xl md:text-6xl font-display font-black tracking-tighter uppercase mb-4 drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]"
           >
             NUESTRO <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-cyan-400">TALENTO</span>
           </motion.h2>

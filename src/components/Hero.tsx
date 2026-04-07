@@ -18,14 +18,14 @@ const Hero = () => {
       <div className="absolute inset-0 z-0 flex flex-col justify-center overflow-hidden pointer-events-none opacity-[0.06] will-change-transform">
         <motion.div style={{ x: textX1 }} className="whitespace-nowrap flex leading-none">
           {Array(4).fill('PRODUCCIÓN ').map((text, i) => (
-            <span key={i} className="text-[120px] md:text-[220px] lg:text-[320px] font-display font-black text-white px-4">
+            <span key={i} className="text-[80px] md:text-[220px] lg:text-[320px] font-display font-black text-white px-4">
               {text}
             </span>
           ))}
         </motion.div>
         <motion.div style={{ x: textX2 }} className="whitespace-nowrap flex leading-none -ml-[400px]">
           {Array(4).fill('DE ÉLITE ').map((text, i) => (
-            <span key={i} className="text-[120px] md:text-[220px] lg:text-[320px] font-display font-black text-white px-4 outline-text">
+            <span key={i} className="text-[80px] md:text-[220px] lg:text-[320px] font-display font-black text-white px-4 outline-text">
               {text}
             </span>
           ))}
@@ -58,16 +58,16 @@ const Hero = () => {
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className="text-6xl md:text-8xl lg:text-[160px] font-display font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-500 drop-shadow-[0_0_80px_rgba(255,255,255,0.1)]"
+            className="text-5xl md:text-8xl lg:text-[160px] font-display font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-500 drop-shadow-[0_0_80px_rgba(255,255,255,0.1)]"
             style={{ lineHeight: 0.9 }}
           >
             NOCTRA
           </motion.h1>
           <motion.p
-             initial={{ opacity: 0, letterSpacing: "0em" }}
-             animate={{ opacity: 1, letterSpacing: "0.5em" }}
+             initial={{ opacity: 0 }}
+             animate={{ opacity: 1 }}
              transition={{ duration: 1.5, delay: 0.6 }}
-             className="text-primary-light font-medium mt-4 text-xl md:text-3xl uppercase"
+             className="text-primary-light font-medium mt-2 md:mt-4 text-lg md:text-3xl uppercase tracking-[0.3em] md:tracking-[0.5em]"
           >
              EVENTOS
           </motion.p>

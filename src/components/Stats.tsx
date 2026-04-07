@@ -30,10 +30,10 @@ const Stats = () => {
               transition={{ delay: stat.delay, duration: 0.8, type: "spring" }}
               className="flex flex-col items-center group cursor-default"
             >
-              <h4 className="text-4xl md:text-6xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 group-hover:from-primary group-hover:to-accent transition-all duration-300 drop-shadow-sm mb-2">
+              <h4 className="text-3xl md:text-6xl font-display font-black text-transparent bg-clip-text bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-400 group-hover:from-primary group-hover:to-accent transition-all duration-300 drop-shadow-sm mb-1">
                 {stat.value}
               </h4>
-              <p className="text-sm md:text-base font-semibold text-gray-500 dark:text-gray-400 tracking-widest uppercase">
+              <p className="text-[10px] md:text-base font-semibold text-gray-500 dark:text-gray-400 tracking-wider md:tracking-widest uppercase">
                 {stat.label}
               </p>
             </motion.div>

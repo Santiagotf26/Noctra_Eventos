@@ -27,8 +27,8 @@ const Navbar = () => {
     >
       <nav className={`w-full max-w-7xl mx-auto rounded-2xl transition-all duration-500 overflow-hidden ${
         scrolled 
-          ? 'py-3 px-6 bg-darker/60 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]' 
-          : 'py-4 px-6 bg-transparent border border-transparent'
+          ? 'py-3 px-4 md:px-6 bg-darker/60 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]' 
+          : 'py-4 px-4 md:px-6 bg-transparent border border-transparent'
       }`}>
         <div className="flex justify-between items-center relative z-10">
           

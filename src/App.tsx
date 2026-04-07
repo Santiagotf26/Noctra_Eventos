@@ -85,7 +85,7 @@ function App() {
   }
 
   return (
-    <div className="relative font-sans antialiased text-gray-100 min-h-screen selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className="relative font-sans antialiased text-gray-100 min-h-screen w-full overflow-x-hidden selection:bg-cyan-500/30 selection:text-cyan-200">
       <FluidBackground />
       <Navbar />
       

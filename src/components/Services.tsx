@@ -67,7 +67,7 @@ const Services = () => {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.1, duration: 0.4, ease: "easeOut" }}
-          className="text-4xl md:text-5xl lg:text-7xl font-display font-black tracking-tighter text-white mt-4"
+          className="text-3xl md:text-5xl lg:text-7xl font-display font-black tracking-tighter text-white mt-4"
         >
            SERVICIOS <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">INTEGRALES</span>
         </motion.h2>

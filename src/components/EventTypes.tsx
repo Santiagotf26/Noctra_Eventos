@@ -42,7 +42,7 @@ const EventTypes = () => {
               whileInView={{ opacity: 1, scale: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, ease: "easeOut" }}
-              className="text-4xl md:text-6xl font-display font-black tracking-tight text-white mb-6 uppercase"
+              className="text-3xl md:text-6xl font-display font-black tracking-tight text-white mb-6 uppercase"
             >
               Categorías de <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Eventos</span>
             </motion.h2>

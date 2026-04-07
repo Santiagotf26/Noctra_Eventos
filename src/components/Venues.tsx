@@ -42,7 +42,7 @@ const Venues = () => {
             whileInView={{ opacity: 1, scale: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 dark:text-white"
+            className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-gray-900 dark:text-white"
           >
             NUESTRAS <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">LOCACIONES</span>
           </motion.h2>
