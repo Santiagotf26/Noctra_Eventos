@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="bg-gray-100 dark:bg-[#05050A] pt-24 pb-12 border-t border-gray-200 dark:border-white/5 relative overflow-hidden transition-colors duration-500">
       
       {/* Glow de fondo */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 blur-[150px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 opacity-0 hidden rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-7xl mx-auto px-6 md:px-10 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-20 text-center md:text-left">

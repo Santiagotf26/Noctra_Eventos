@@ -1,78 +1,112 @@
+import React, { Suspense, useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import EventTypes from './components/EventTypes';
-import Services from './components/Services';
-import About from './components/About';
-import Gallery from './components/Gallery';
-import Footer from './components/Footer';
 import FloatingWhatsApp from './components/FloatingWhatsApp';
 import Preloader from './components/Preloader';
-import { useEffect, useState } from 'react';
+import Marquee from './components/Marquee';
+
+// Lazy load components
+const Hero = React.lazy(() => import('./components/Hero'));
+const Stats = React.lazy(() => import('./components/Stats'));
+const EventTypes = React.lazy(() => import('./components/EventTypes'));
+const Services = React.lazy(() => import('./components/Services'));
+const Venues = React.lazy(() => import('./components/Venues'));
+const Team = React.lazy(() => import('./components/Team'));
+const Testimonials = React.lazy(() => import('./components/Testimonials'));
+const About = React.lazy(() => import('./components/About'));
+const Gallery = React.lazy(() => import('./components/Gallery'));
+const Footer = React.lazy(() => import('./components/Footer'));
+
+const FluidBackground = () => (
+  <div className="fixed inset-0 z-[-1] overflow-hidden bg-[#030305]">
+     <motion.div
+       animate={{ 
+         x: [0, 100, -50, 0], 
+         y: [0, -50, 100, 0],
+         scale: [1, 1.2, 1]
+       }}
+       transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+       className="absolute top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full pointer-events-none"
+       style={{ background: 'radial-gradient(circle, rgba(124,58,237,0.15) 0%, rgba(124,58,237,0) 70%)' }}
+     />
+     <motion.div
+        animate={{
+           x: [0, -100, 50, 0],
+           y: [0, 100, -50, 0],
+           scale: [1, 1.1, 1]
+        }}
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(232,28,255,0.1) 0%, rgba(232,28,255,0) 70%)' }}
+     />
+      <motion.div
+        animate={{
+           x: [0, 50, -50, 0],
+           y: [0, 50, -50, 0],
+           scale: [1, 1.3, 1]
+        }}
+        transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+        className="absolute top-[30%] left-[30%] w-[40vw] h-[40vw] rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(0,240,255,0.1) 0%, rgba(0,240,255,0) 70%)' }}
+     />
+  </div>
+);
 
 function App() {
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Revisar preferencia guardada (por defecto modo claro como solicitó el usuario)
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      setIsDarkMode(true);
-      document.documentElement.classList.add('dark');
-    } else {
-      setIsDarkMode(false);
-      document.documentElement.classList.remove('dark');
-    }
+    // Forced dark mode to prevent any white flashes flashes
+    document.documentElement.classList.add('dark');
 
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', (e) => {
         e.preventDefault();
         const targetId = anchor.getAttribute('href');
         if (targetId && targetId !== '#') {
-        const targetElement = document.querySelector(targetId);
-        if (targetElement) {
-          targetElement.scrollIntoView({ behavior: 'smooth' });
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+          }
         }
-      }
+      });
     });
-  });
 
-  // Simular tiempo de carga del preloader y esperar que imágenes pesadas se cacheadas
-  const loadTimer = setTimeout(() => setIsLoading(false), 2200);
-  return () => clearTimeout(loadTimer);
-}, []);
-
-  const toggleTheme = () => {
-    if (isDarkMode) {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-      setIsDarkMode(false);
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-      setIsDarkMode(true);
-    }
-  };
+    const loadTimer = setTimeout(() => setIsLoading(false), 2500);
+    return () => clearTimeout(loadTimer);
+  }, []);
 
   if (isLoading) {
     return (
-      <div className="font-sans antialiased bg-gray-50 dark:bg-[#05050A] text-gray-900 dark:text-gray-100 min-h-screen">
+      <div className="font-sans antialiased bg-[#030305] text-gray-100 min-h-screen">
         <Preloader />
       </div>
     );
   }
 
   return (
-    <div className="font-sans antialiased bg-gray-50 dark:bg-darker text-gray-900 dark:text-gray-100 min-h-screen transition-colors duration-500">
-      <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+    <div className="relative font-sans antialiased text-gray-100 min-h-screen selection:bg-cyan-500/30 selection:text-cyan-200">
+      <FluidBackground />
+      <Navbar />
+      
       <main>
-        <Hero />
-        <EventTypes />
-        <About />
-        <Services />
-        <Gallery />
+        <Suspense fallback={<div className="min-h-screen" />}>
+          <Hero />
+          <Stats />
+          <Marquee />
+          <EventTypes />
+          <Services />
+          <Venues />
+          <Team />
+          <Testimonials />
+          <About />
+          <Gallery />
+        </Suspense>
       </main>
-      <Footer />
+      
+      <Suspense fallback={<div />}>
+        <Footer />
+      </Suspense>
       <FloatingWhatsApp />
     </div>
   );

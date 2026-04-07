@@ -5,7 +5,7 @@ const Preloader = () => {
     <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-gray-50 dark:bg-[#05050A] transition-colors duration-500">
       
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/20 blur-[100px] rounded-full" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-primary/20 opacity-0 hidden rounded-full" />
 
       {/* Barras de Ecualizador (DJ/Fiesta) */}
       <div className="flex items-end gap-2 h-16 mb-8 relative z-10">

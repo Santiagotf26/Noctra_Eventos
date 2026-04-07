@@ -3,126 +3,130 @@ import { Check } from 'lucide-react';
 
 const services = [
   {
-    tag: "NIVEL 01",
-    title: "OPERACIÓN\nEN VIVO",
-    desc: "Coordinación técnica milimétrica. Nos encargamos de la operación de sonido, luces y visuales en tiempo real para que los artistas brillen.",
+    tag: "AUDIOVISUAL",
+    title: "ALQUILER DE EQUIPOS\nAUDIOVISUALES",
+    desc: "Proveemos tecnología punta. Sistemas de sonido Line Array, microfonía inalámbrica profesional, consolas digitales, pantallas LED pitch fino y diseños de iluminación robótica (DMX).",
     points: [
-      "Monitores y PA para DJs e Invitados",
-      "Controladores y Consolas Pioneer",
-      "Iluminación DMX Sincronizada",
-      "Soporte In Situ Ininterrumpido"
+      "Pantallas LED y Video Mapping",
+      "Sistemas Line Array y Monitoreo",
+      "Iluminación Robótica Sincronizada",
     ],
-    img: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&fm=webp&q=60",
+    img: "https://images.unsplash.com/photo-1598387993441-a364f854c3e1?auto=format&fit=crop&w=800&q=80",
     reverse: false
   },
   {
-    tag: "NIVEL 02",
-    title: "DISEÑO DE\nESCENARIO",
-    subtitle: "ESTÉTICA VISUAL",
-    desc: "El aspecto visual de tu evento. Desde tarimas LED hasta andamiaje tipo Truss para festivales, definimos la personalidad visual.",
+    tag: "GASTRONOMÍA",
+    title: "CATERING Y\nMENAJE EXCLUSIVO",
+    desc: "La experiencia culinaria a tu medida. Diseñamos menús exquisitos para cualquier tipo de evento, ofreciendo desde pasabocas gourmet hasta cenas a tres tiempos con cristalería y menaje de lujo.",
     points: [
-      "Rigging y Estructuras Modulares",
-      "Pantallas LED Pitch Fino",
-      "Efectos CO2 y Pirotecnia Fría",
-      "Afinación Acústica del Recinto"
+      "Menús Personalizados Gourmet",
+      "Cristalería y Cubertería de Lujo",
+      "Servicio de Meseros Premium",
     ],
-    img: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=800&fm=webp&q=60",
+    img: "https://images.unsplash.com/photo-1555244162-803834f70033?auto=format&fit=crop&w=800&q=80",
     reverse: true
+  },
+  {
+    tag: "ESCENOGRAFÍA",
+    title: "DECORACIÓN Y\nAMBIENTACIÓN",
+    desc: "Transformamos espacios ordinarios en extraordinarios. Arreglos florales de alto diseño, estructuras decorativas, luces cálidas, y mobiliario de tendencia para darle carácter a tu evento.",
+    points: [
+      "Arreglos Florales y Centros de Mesa",
+      "Mobiliario de Vanguardia",
+      "Arquitectura Efímera y Stands",
+    ],
+    img: "https://images.unsplash.com/photo-1469334026362-e6e22c0734dd?auto=format&fit=crop&w=800&q=80",
+    reverse: false
   }
 ];
 
 const Services = () => {
   return (
-    <section id="servicios" className="py-24 md:py-32 bg-gray-100 dark:bg-[#080812] relative overflow-hidden transition-colors duration-500">
+    <section id="servicios" className="py-24 md:py-32 bg-[#020203] relative overflow-hidden transition-colors duration-500">
       
-      {/* Malla de cibernética abstracta (Glass) */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.05] dark:opacity-[0.03]" style={{
-        backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)',
-        backgroundSize: '40px 40px',
-        color: 'gray'
+      {/* Background Cyber Grid */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.03]" style={{
+        backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
+        backgroundSize: '30px 30px',
       }} />
 
-      {/* Encabezado */}
-      <div className="max-w-7xl mx-auto px-6 md:px-10 mb-20 relative z-10 text-center md:text-left">
+      {/* Header */}
+      <div className="max-w-7xl mx-auto px-6 md:px-10 mb-24 relative z-10 text-center">
         <motion.span 
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true }}
-          className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-md mb-6"
+          transition={{ duration: 0.4, ease: "easeOut" }}
+          className="uppercase tracking-[0.2em] text-primary font-bold text-sm"
         >
-          <span className="section-tag !mb-0 text-primary dark:text-primary-light">PRODUCCIÓN TÉCNICA</span>
+          Suministramos los mejores recursos
         </motion.span>
         
         <motion.h2 
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.95, y: 20 }}
+          whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-5xl lg:text-7xl font-display font-bold tracking-tight text-gray-900 dark:text-white mb-6 drop-shadow-sm dark:drop-shadow-2xl"
+          transition={{ delay: 0.1, duration: 0.4, ease: "easeOut" }}
+          className="text-4xl md:text-5xl lg:text-7xl font-display font-black tracking-tighter text-white mt-4"
         >
-           SERVICIOS
-          <br />
-          <span className="relative inline-block mt-2">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-900 via-primary to-accent dark:from-white dark:via-primary-light dark:to-primary">INTEGRALES</span>
-            <motion.span 
-              initial={{ width: 0 }}
-              whileInView={{ width: "100%" }}
-              transition={{ delay: 0.5, duration: 1 }}
-              className="absolute -bottom-2 left-0 h-1 md:h-2 bg-gradient-to-r from-primary to-accent rounded-full shadow-none dark:shadow-[0_0_15px_rgba(232,28,255,0.8)]" 
-            />
-          </span>
+           SERVICIOS <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">INTEGRALES</span>
         </motion.h2>
       </div>
 
-      {/* Bloques de Servicio */}
+      {/* Stacked Service Items */}
       <div className="space-y-32 relative z-10 pb-16">
-        {services.map((svc) => (
+        {services.map((svc, index) => (
           <motion.div
             key={svc.tag}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, margin: "50px" }}
+            transition={{ duration: 0.4, delay: index * 0.1, ease: "easeOut" }}
             className={`max-w-7xl mx-auto px-6 md:px-10 flex flex-col ${svc.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'} gap-12 lg:gap-24 items-center group`}
           >
-            {/* Contenido / Texto */}
+            {/* Context/Text */}
             <div className="w-full lg:w-[45%]">
-              <div className="bg-white/70 dark:bg-surface/40 backdrop-blur-xl border border-gray-200 dark:border-white/5 p-8 md:p-10 rounded-[2rem] hover:bg-white dark:hover:bg-surface/60 hover:border-primary/20 dark:hover:border-white/10 transition-all duration-500 shadow-xl dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+              <div className="bg-white/[0.02] backdrop-blur-2xl border border-white/5 p-8 md:p-12 rounded-[2rem] hover:bg-white/[0.05] hover:border-primary/20 transition-all duration-500 shadow-2xl relative overflow-hidden">
                 
+                {/* Glow effect inside card */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 blur-[50px] rounded-full pointer-events-none" />
+
                 <div className="flex items-center gap-4 mb-6">
-                  <span className="section-tag bg-gray-100 dark:bg-white/10 px-3 py-1 rounded-md text-gray-800 dark:text-white drop-shadow-sm border border-gray-200 dark:border-white/20">{svc.tag}</span>
+                  <span className="section-tag bg-white/5 border border-white/10 px-3 py-1 rounded-md text-white/80 drop-shadow-sm">{svc.tag}</span>
                 </div>
 
-                <h3 className="text-3xl md:text-5xl font-display font-bold text-gray-900 dark:text-white tracking-tight whitespace-pre-line mb-8 leading-[1.1] group-hover:text-primary transition-colors duration-500">
+                <h3 className="text-3xl md:text-4xl font-display font-black text-white tracking-tight whitespace-pre-line mb-6 leading-tight group-hover:text-primary-light transition-colors duration-500">
                   {svc.title}
                 </h3>
                 
-                <p className="text-gray-600 dark:text-gray-400 text-[15px] md:text-base leading-relaxed mb-10 group-hover:text-gray-800 dark:group-hover:text-gray-300 transition-colors">
+                <p className="text-gray-400 text-[15px] md:text-base leading-relaxed mb-8">
                   {svc.desc}
                 </p>
 
                 <ul className="space-y-4">
                   {svc.points.map((point, i) => (
-                    <motion.li key={i} whileHover={{ x: 5 }} className="flex items-start gap-4 group/item">
-                      <div className="w-6 h-6 rounded-full bg-primary/10 dark:bg-primary/20 border border-primary/30 dark:border-primary/40 flex items-center justify-center mt-0.5 shrink-0 group-hover/item:bg-primary transition-all shadow-sm">
-                        <Check className="w-3 h-3 text-primary dark:text-white group-hover/item:text-white" />
+                    <motion.li key={i} whileHover={{ x: 5 }} className="flex items-start gap-4">
+                      <div className="w-6 h-6 rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center shrink-0 mt-0.5">
+                        <Check className="w-3 h-3 text-primary-light" />
                       </div>
-                      <span className="text-gray-600 dark:text-gray-400 text-sm group-hover/item:text-gray-900 dark:group-hover/item:text-white transition-colors">{point}</span>
+                      <span className="text-gray-300 font-medium">{point}</span>
                     </motion.li>
                   ))}
                 </ul>
               </div>
             </div>
 
-            {/* Imagen Dinámica */}
+            {/* Dynamic Image */}
             <div className="w-full lg:w-[55%] relative">
-              <div className={`absolute top-1/2 -translate-y-1/2 ${svc.reverse ? '-left-10' : '-right-10'} w-72 h-72 bg-gradient-to-br from-primary to-accent blur-[80px] opacity-10 dark:opacity-20 group-hover:opacity-30 dark:group-hover:opacity-40 transition-opacity duration-1000 -z-10 rounded-full`} />
+              <div className={`absolute top-1/2 -translate-y-1/2 ${svc.reverse ? '-left-10' : '-right-10'} w-96 h-96 bg-gradient-to-br from-primary to-accent opacity-0 hidden opacity-20 group-hover:opacity-40 transition-opacity duration-1000 -z-10 rounded-full`} />
               
               <motion.div 
-                whileHover={{ scale: 1.03, rotate: svc.reverse ? -2 : 2 }}
-                transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                className="aspect-[4/3] rounded-[2rem] overflow-hidden shadow-2xl border-2 border-gray-100 dark:border-white/5 group-hover:border-primary/30 transition-colors duration-500 relative"
+                whileHover={{ scale: 1.02, rotate: svc.reverse ? -1 : 1 }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="aspect-[4/3] rounded-[2rem] overflow-hidden border border-white/10 group-hover:border-primary/50 transition-colors duration-500 shadow-[0_0_50px_rgba(0,0,0,0.5)] relative"
               >
-                <div className="absolute inset-0 bg-primary/10 mix-blend-overlay group-hover:bg-transparent transition-colors duration-1000 z-10" />
-                <img src={svc.img} alt="Técnica" loading="lazy" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2s] ease-out saturate-50 group-hover:saturate-100" />
+                <img src={svc.img} alt={svc.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2.5s] ease-out saturate-[0.8] group-hover:saturate-125" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#020203] via-transparent to-transparent opacity-80 mix-blend-overlay" />
               </motion.div>
             </div>
           </motion.div>
