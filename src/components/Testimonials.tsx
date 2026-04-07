@@ -43,8 +43,8 @@ const Testimonials = () => {
           {testimonials.map((t, idx) => (
             <motion.div
               key={idx}
-              initial={{ opacity: 0, y: 50, y: 20 }}
-              whileInView={{ opacity: 1, y: 0, y: 0 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "50px" }}
               transition={{ delay: idx * 0.15, duration: 0.4, ease: "easeOut" }}
               className="group bg-white/[0.04] backdrop-blur-2xl border border-white/[0.08] p-8 md:p-10 rounded-3xl hover:bg-white/[0.08] hover:border-primary/40 transition-all duration-500 shadow-2xl relative"
