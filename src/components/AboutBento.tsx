@@ -1,6 +1,6 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
-import { Users, Zap, Calendar } from 'lucide-react';
+import { Zap } from 'lucide-react';
 
 const AboutBento = () => {
     const ref = useRef(null);
@@ -11,7 +11,7 @@ const AboutBento = () => {
     const [guests, setGuests] = useState('100');
     const [extraSound, setExtraSound] = useState(false);
     const [robot, setRobot] = useState(false);
-    
+
     // Base minimum is 900,000 + additional factors
     const basePrices: Record<string, number> = { 
         'matrimonios': 1200000, 
@@ -149,13 +149,13 @@ const AboutBento = () => {
                                         <p className="text-gray-300 text-xs mb-4">Adiciona servicios especiales para elevar el valor de producción de tu evento.</p>
                                         
                                         <div className="flex flex-col gap-3">
-                                            <label className="flex items-center gap-3 cursor-pointer group">
+                                            <label className="flex items-center gap-3 cursor-pointer group" onClick={() => setExtraSound(!extraSound)}>
                                                 <div className={`w-5 h-5 rounded border flex items-center justify-center transition-colors ${extraSound ? 'bg-primary border-primary text-black' : 'border-white/30 group-hover:border-primary/50'}`}>
                                                     {extraSound && <span className="text-xs font-bold font-sans">✓</span>}
                                                 </div>
                                                 <span className="text-sm font-sans font-medium text-white group-hover:text-primary transition-colors">Decoración & Equipos Premium</span>
                                             </label>
-                                            <label className="flex items-center gap-3 cursor-pointer group">
+                                            <label className="flex items-center gap-3 cursor-pointer group" onClick={() => setRobot(!robot)}>
                                                 <div className={`w-5 h-5 rounded border flex items-center justify-center transition-colors ${robot ? 'bg-primary border-primary text-black' : 'border-white/30 group-hover:border-primary/50'}`}>
                                                     {robot && <span className="text-xs font-bold font-sans">✓</span>}
                                                 </div>
