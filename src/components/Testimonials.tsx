@@ -3,7 +3,7 @@ import { Quote } from 'lucide-react';
 
 const testimonials = [
   {
-    text: "La calidad audiovisual y el nivel del DJ transformaron nuestra fiesta de fin de año en un evento de talla mundial. Noctra entrega lo que promete: élite absoluta.",
+    text: "La calidad audiovisual y el nivel del DJ transformaron nuestra fiesta de fin de año en un evento de talla mundial. FOLE entrega lo que promete: élite absoluta.",
     author: "CEO, TechNova Corp",
     event: "Gala Corporativa Anual"
   },
@@ -13,7 +13,7 @@ const testimonials = [
     event: "Fiesta de 15 Años VIP"
   },
   {
-    text: "Desde la logística hasta el último beat, la energía nunca bajó. El staff de Noctra son verdaderos maestros de la producción.",
+    text: "Desde la logística hasta el último beat, la energía nunca bajó. El staff de FOLE son verdaderos maestros de la producción.",
     author: "Director de Marketing",
     event: "Activación de Marca"
   }

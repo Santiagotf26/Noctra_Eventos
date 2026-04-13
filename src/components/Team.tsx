@@ -1,90 +1,56 @@
-import { motion } from 'framer-motion';
-import { Headphones, Music } from 'lucide-react';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
 
 const team = [
-  {
-    name: "ALEX VANGUARD",
-    role: "HEAD PRODUCER",
-    img: "/djs/dj_alpha.png"
-  },
-  {
-    name: "MIA KRYPT",
-    role: "RESIDENT DJ",
-    img: "/djs/dj_beta.png"
-  },
-  {
-    name: "ZANE NEØN",
-    role: "TECHNO VISIONARY",
-    img: "/djs/dj_gamma.png"
-  }
+    { name: "Andrés Kramer", score: "Senior", img: "https://i.pravatar.cc/150?img=11" },
+    { name: "Camilo Armand", score: "Lighting", img: "https://i.pravatar.cc/150?img=12" },
+    { name: "Benjamín Higgins", score: "Audio", img: "https://i.pravatar.cc/150?img=13" },
+    { name: "Sarah Foster", score: "Logistics", img: "https://i.pravatar.cc/150?img=14" },
+    { name: "Sofía Mckinney", score: "Creative", img: "https://i.pravatar.cc/150?img=15" },
 ];
 
 const Team = () => {
-  return (
-    <section id="equipo" className="py-24 md:py-32 relative overflow-hidden bg-transparent z-10 text-white">
-      
-      <div className="max-w-7xl mx-auto px-6 md:px-10">
-        <div className="text-center mb-16 md:mb-24">
-          <motion.h2 
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            whileInView={{ opacity: 1, scale: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, ease: "easeOut" }}
-            className="text-3xl md:text-6xl font-display font-black tracking-tighter uppercase mb-4 drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]"
-          >
-            NUESTRO <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-light to-cyan-400">TALENTO</span>
-          </motion.h2>
-          <p className="text-gray-400 max-w-xl mx-auto">
-            Los curadores de la energía. Productores y DJs residentes que garantizan que el ambiente nunca caiga.
-          </p>
-        </div>
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "-50px" });
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {team.map((member, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true, margin: "50px" }}
-              transition={{ delay: idx * 0.15, duration: 0.4, ease: "easeOut" }}
-              className="group relative cursor-pointer"
-            >
-              {/* Glow Aura */}
-              <div className="absolute inset-0 bg-primary/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
-              
-              <div className="relative rounded-[2rem] overflow-hidden aspect-[3/4] border border-white/10 group-hover:border-primary/40 transition-colors duration-500 shadow-2xl">
-                <img 
-                  src={member.img} 
-                  alt={member.name}
-                  className="w-full h-full object-cover saturate-50 group-hover:saturate-100 transition-all duration-[2s] group-hover:scale-110" 
-                />
-                
-                {/* Gradient Info Box */}
-                <div className="absolute inset-x-0 bottom-0 p-8 bg-gradient-to-t from-[#020202] via-[#020202]/80 to-transparent translate-y-6 group-hover:translate-y-0 transition-transform duration-500 ease-out">
-                  <h3 className="text-2xl font-display font-black tracking-wider uppercase mb-1 drop-shadow-md text-white group-hover:text-cyan-400 transition-colors">
-                    {member.name}
-                  </h3>
-                  <p className="text-primary-light text-xs font-bold tracking-[0.2em] mb-4">
-                    {member.role}
-                  </p>
-                  
-                  {/* Social Micro-interactions */}
-                  <div className="flex items-center gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                    <button className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center hover:bg-primary transition-colors border border-white/20 hover:border-transparent">
-                      <Headphones size={18} />
-                    </button>
-                    <button className="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center hover:bg-cyan-500 transition-colors border border-white/20 hover:border-transparent">
-                      <Music size={18} />
-                    </button>
-                  </div>
+    return (
+        <section ref={ref} className="py-20 relative max-w-[1400px] mx-auto px-6 border-t border-white/5">
+            <div className="text-center mb-12 flex flex-col items-center">
+                <div className="flex items-center gap-2 mb-6">
+                    <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(57,255,20,0.8)]" />
+                    <span className="text-white text-xs font-sans font-bold tracking-widest uppercase">Expertise</span>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+                <motion.h2 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6 }}
+                    className="font-display font-medium text-3xl md:text-5xl text-white tracking-tighter"
+                >
+                    Nuestros Expertos
+                </motion.h2>
+            </div>
+
+            <div className="flex flex-wrap justify-center gap-4">
+                {team.map((member, idx) => (
+                    <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                        transition={{ delay: idx * 0.05, duration: 0.4 }}
+                        className="bg-[#0C0C0C] hover:bg-[#141414] transition-colors rounded-xl p-3 flex items-center gap-4 cursor-pointer group border border-white/5 min-w-[200px]"
+                    >
+                        <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 border border-white/10 group-hover:border-primary/50 transition-colors">
+                            <img src={member.img} alt={member.name} className="w-full h-full object-cover img-tint opacity-80" />
+                        </div>
+                        <div className="overflow-hidden">
+                            <h3 className="text-white font-sans font-bold text-sm truncate">{member.name}</h3>
+                            <p className="text-primary text-[10px] uppercase tracking-wider font-bold mt-0.5">{member.score}</p>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+        </section>
+    );
 };
 
 export default Team;

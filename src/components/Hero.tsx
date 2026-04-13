@@ -1,128 +1,138 @@
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
+import { Music, Music2, Music3, Sparkles, AudioWaveform } from 'lucide-react';
 
 const Hero = () => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  
-  // Parallax extreme scroll animations
-  const { scrollYProgress } = useScroll({ target: containerRef });
-  const textX1 = useTransform(scrollYProgress, [0, 1], [0, -800]);
-  const textX2 = useTransform(scrollYProgress, [0, 1], [0, 800]);
-  const yParallax = useTransform(scrollYProgress, [0, 1], [0, 150]);
-  const opacityFade = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+    return (
+        <section id="inicio" className="relative w-full min-h-[100svh] pt-16 md:pt-32 pb-12 overflow-hidden flex flex-col items-center justify-center">
+            
+            {/* ABSTRACT ART ASSET (Simulating the wavy neon green orb/membrane) */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[60%] md:-translate-y-1/2 w-[600px] h-[600px] md:w-[850px] md:h-[850px] opacity-60 z-0 pointer-events-none mix-blend-screen">
+                 <img src="/orb.png" alt="Neon Green Blob" className="w-full h-full object-cover mix-blend-screen filter contrast-125 saturate-150" style={{ maskImage: 'radial-gradient(circle at center, black 30%, transparent 70%)', WebkitMaskImage: 'radial-gradient(circle at center, black 30%, transparent 70%)' }} />
+            </div>
 
-  return (
-    <section id="inicio" ref={containerRef} className="relative min-h-[100vh] flex flex-col items-center justify-center overflow-hidden bg-[#030305] transition-colors duration-500">
-      
-      {/* Background Kinetic Scrolling Text */}
-      <div className="absolute inset-0 z-0 flex flex-col justify-center overflow-hidden pointer-events-none opacity-[0.06] will-change-transform">
-        <motion.div style={{ x: textX1 }} className="whitespace-nowrap flex leading-none">
-          {Array(4).fill('PRODUCCIÓN ').map((text, i) => (
-            <span key={i} className="text-[80px] md:text-[220px] lg:text-[320px] font-display font-black text-white px-4">
-              {text}
-            </span>
-          ))}
-        </motion.div>
-        <motion.div style={{ x: textX2 }} className="whitespace-nowrap flex leading-none -ml-[400px]">
-          {Array(4).fill('DE ÉLITE ').map((text, i) => (
-            <span key={i} className="text-[80px] md:text-[220px] lg:text-[320px] font-display font-black text-white px-4 outline-text">
-              {text}
-            </span>
-          ))}
-        </motion.div>
-      </div>
+            <div className="max-w-[1400px] w-full mx-auto px-4 sm:px-8 relative flex flex-col items-center text-center -mt-32 md:-mt-8 z-20">
+                
+                {/* FLOATING DECORATIONS (Elegant SVGs) */}
+                <div className="absolute inset-0 pointer-events-none z-0 hidden md:block">
+                    <motion.div animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }} transition={{ duration: 6, repeat: Infinity }} className="absolute top-[5%] left-[25%] text-primary opacity-60">
+                        <Music strokeWidth={1} width={40} height={40} />
+                    </motion.div>
+                    <motion.div animate={{ y: [0, 15, 0], rotate: [0, -10, 0] }} transition={{ duration: 5, repeat: Infinity }} className="absolute top-[25%] right-[28%] text-primary opacity-60">
+                        <Music2 strokeWidth={1} width={48} height={48} />
+                    </motion.div>
+                    <motion.div animate={{ y: [0, -10, 0], rotate: [0, 15, 0] }} transition={{ duration: 7, repeat: Infinity }} className="absolute bottom-[20%] left-[32%] text-primary opacity-50">
+                        <Music3 strokeWidth={1} width={36} height={36} />
+                    </motion.div>
+                    <motion.div animate={{ y: [0, 10, 0], rotate: [0, -5, 0] }} transition={{ duration: 4, repeat: Infinity }} className="absolute top-[18%] right-[18%] opacity-30 text-white">
+                        <Sparkles strokeWidth={1} width={50} height={50} />
+                    </motion.div>
+                    <motion.div animate={{ y: [0, -10, 0], rotate: [0, 10, 0] }} transition={{ duration: 8, repeat: Infinity }} className="absolute bottom-[28%] left-[15%] opacity-30 text-white">
+                        <AudioWaveform strokeWidth={1.5} width={42} height={42} />
+                    </motion.div>
+                </div>
 
-      {/* Cyberpunk/Neon Glowing Orbs */}
-      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/40 rounded-full opacity-0 hidden mix-blend-screen pointer-events-none animate-pulse-slow" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-accent/30 rounded-full opacity-0 hidden mix-blend-screen pointer-events-none" />
+                {/* MASSIVE CENTERED TYPOGRAPHY */}
+                <motion.h1 
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="font-display text-[3.5rem] sm:text-[5.5rem] lg:text-[7rem] leading-[1.05] text-white tracking-tighter text-center relative z-20 drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)] mt-0 md:mt-12"
+                >
+                    Tu Producción <br/>
+                    de <span className="text-primary-light">Eventos</span>
+                </motion.h1>
 
-      {/* Main Content */}
-      <motion.div 
-        style={{ y: yParallax, opacity: opacityFade }}
-        className="relative z-10 flex flex-col items-center text-center px-6 max-w-6xl mx-auto mt-20 pb-32"
-      >
-        <motion.div
-           initial={{ opacity: 0, scale: 0.8 }}
-           animate={{ opacity: 1, scale: 1 }}
-           transition={{ delay: 0.4, type: "spring", stiffness: 100 }}
-           className="px-6 py-2 rounded-full bg-white/5 backdrop-blur-xl border border-white/10 mb-8 shadow-[0_0_30px_rgba(124,58,237,0.2)]"
-        >
-          <span className="section-tag !text-primary-light font-bold tracking-[0.3em]">
-            DISEÑAMOS EXPERIENCIAS INOLVIDABLES
-          </span>
-        </motion.div>
+                {/* CENTERED SUBTITLE & BUTTONS */}
+                <div className="mt-8 flex flex-col items-center gap-10 w-full max-w-3xl relative z-20">
+                    <motion.p
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 0.2 }}
+                        className="text-gray-300 font-sans text-sm md:text-lg leading-relaxed text-center drop-shadow-md"
+                    >
+                        Desde el diseño conceptual y la decoración temática más impresionante, hasta la ejecución técnica con audio, iluminación y DJs/animadores de primer nivel. Creamos experiencias que tus invitados realmente amarán.
+                    </motion.p>
 
-        {/* Dynamic Title */}
-        <div className="overflow-hidden mb-6">
-          <motion.h1
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-            className="text-5xl md:text-8xl lg:text-[160px] font-display font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-white via-white to-gray-500 drop-shadow-[0_0_80px_rgba(255,255,255,0.1)]"
-            style={{ lineHeight: 0.9 }}
-          >
-            NOCTRA
-          </motion.h1>
-          <motion.p
-             initial={{ opacity: 0 }}
-             animate={{ opacity: 1 }}
-             transition={{ duration: 1.5, delay: 0.6 }}
-             className="text-primary-light font-medium mt-2 md:mt-4 text-lg md:text-3xl uppercase tracking-[0.3em] md:tracking-[0.5em]"
-          >
-             EVENTOS
-          </motion.p>
-        </div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                        className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full"
+                    >
+                        <a href="#servicios" className="w-full sm:w-[200px] text-center border border-white/20 hover:border-white/50 text-white font-sans text-sm font-semibold px-8 py-3.5 rounded-full transition-colors bg-black/40 backdrop-blur-md">
+                            Explorar Servicios
+                        </a>
+                        <a href="#cotizador" className="w-full sm:w-[200px] text-center bg-primary hover:bg-primary-light text-black font-sans text-sm font-bold px-8 py-3.5 rounded-full shadow-[0_0_20px_rgba(57,255,20,0.4)] hover:shadow-[0_0_30px_rgba(57,255,20,0.6)] transition-all">
+                            Ver Cotización
+                        </a>
+                    </motion.div>
+                </div>
+            </div>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          className="text-gray-300 md:text-xl font-light max-w-3xl mx-auto mb-12 leading-relaxed"
-        >
-          Agencia organizadora de eventos para empresas, sociales y fiestas. Transformamos espacios mediante iluminación inmersiva, sonido superior y logística impecable.
-        </motion.p>
+            {/* NEW LEFT: LASERS (Above Microphone) */}
+            <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1.5, delay: 0.6, ease: "easeOut" }}
+                className="absolute top-[15%] md:top-[8%] left-[-5%] md:left-[4%] w-[160px] h-[160px] sm:w-[220px] sm:h-[220px] md:w-[350px] md:h-[350px] mix-blend-screen pointer-events-none opacity-40 sm:opacity-50 lg:opacity-70 z-0 lg:z-20"
+            >
+                <img src="/lasers.png" alt="Laser Lights" className="w-full h-full object-contain filter contrast-[1.5] saturate-200 brightness-[0.9]" style={{ maskImage: 'radial-gradient(circle at center, black 40%, transparent 70%)', WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 70%)' }} />
+            </motion.div>
 
-        {/* Interactive Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.2, duration: 0.7 }}
-          className="flex flex-col sm:flex-row gap-6 relative"
-        >
-          {/* Glow effect behind primary button */}
-          <div className="absolute inset-0 bg-primary blur-2xl opacity-40 animate-pulse rounded-full z-0" />
-          
-          <motion.a
-            whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(124,58,237,0.6)" }}
-            whileTap={{ scale: 0.95 }}
-            href="https://wa.me/573114971131"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative z-10 px-10 py-5 rounded-full bg-primary text-white font-bold text-sm tracking-[0.2em] transition-all flex items-center justify-center gap-3 overflow-hidden border border-primary-light/50"
-          >
-            <span className="relative z-10">COTIZAR AHORA</span>
-          </motion.a>
-          
-          <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            href="#servicios"
-            className="relative z-10 px-10 py-5 rounded-full bg-white/5 backdrop-blur-md border border-white/20 text-white font-bold text-sm tracking-[0.2em] hover:bg-white/10 transition-all flex items-center justify-center"
-          >
-            NUESTROS SERVICIOS
-          </motion.a>
-        </motion.div>
-      </motion.div>
+            {/* LEFT: MICROPHONES (Responsive Background Element) */}
+            <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1.5, delay: 0.3, ease: "easeOut" }}
+                className="absolute bottom-[8%] md:bottom-[-2%] left-[-5%] md:left-2 w-[180px] h-[180px] sm:w-[250px] sm:h-[250px] md:w-[400px] md:h-[400px] mix-blend-screen pointer-events-none opacity-30 sm:opacity-50 lg:opacity-90 z-0 lg:z-30"
+            >
+                <img src="/mics.png" alt="Microphones" className="w-full h-full object-contain filter contrast-[1.4] saturate-150 brightness-[0.8]" style={{ maskImage: 'radial-gradient(circle at center, black 40%, transparent 70%)', WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 70%)' }} />
+            </motion.div>
 
-      {/* Styled Outline Text specific to this dark theme */}
-      <style>{`
-        .outline-text {
-          color: transparent !important;
-          -webkit-text-stroke: 1px rgba(255,255,255,0.05);
-        }
-      `}</style>
-    </section>
-  );
+            {/* NEW RIGHT: MOVING HEADS (Above DJ Controller) */}
+            <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1.5, delay: 0.7, ease: "easeOut" }}
+                className="absolute top-[12%] md:top-[5%] right-[-5%] md:right-[4%] w-[160px] h-[160px] sm:w-[220px] sm:h-[220px] md:w-[350px] md:h-[350px] mix-blend-screen pointer-events-none opacity-40 sm:opacity-50 lg:opacity-80 z-0 lg:z-20"
+            >
+                <img src="/moving_heads.png" alt="Moving Heads" className="w-full h-full object-contain filter contrast-[1.6] saturate-[1.8]" style={{ maskImage: 'radial-gradient(circle at center, black 35%, transparent 70%)', WebkitMaskImage: 'radial-gradient(circle at center, black 35%, transparent 70%)' }} />
+            </motion.div>
+
+            {/* RIGHT: DJ CONTROLLER (Responsive Background Element) */}
+            <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 1.5, delay: 0.4, ease: "easeOut" }}
+                className="absolute bottom-[8%] md:bottom-[-2%] right-[-5%] md:right-1 w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] md:w-[500px] md:h-[500px] mix-blend-screen pointer-events-none opacity-40 sm:opacity-60 lg:opacity-100 z-0 lg:z-30"
+            >
+                <img src="/dj.png" alt="DJ Controller" className="w-full h-full object-contain filter contrast-[1.5] saturate-150 brightness-[0.8]" style={{ maskImage: 'radial-gradient(circle at center, black 40%, transparent 70%)', WebkitMaskImage: 'radial-gradient(circle at center, black 40%, transparent 70%)' }} />
+            </motion.div>
+
+            {/* BOTTOM SCROLL INDICATOR */}
+            <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1, duration: 1 }}
+                className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 z-30 opacity-70"
+            >
+                <span className="text-[10px] font-sans font-bold uppercase tracking-[0.3em] text-white/50 mb-1">
+                    Desliza
+                </span>
+                
+                {/* Mouse Outline Pill */}
+                <div className="w-[20px] h-[34px] border-[1.5px] border-white/40 rounded-full flex justify-center p-[2px]">
+                    {/* Scrolling Wheel / Dot */}
+                    <motion.div 
+                        animate={{ y: [0, 15, 0], opacity: [1, 0, 1] }} 
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                        className="w-[3px] h-[6px] bg-primary rounded-full"
+                    />
+                </div>
+            </motion.div>
+            
+        </section>
+    );
 };
 
 export default Hero;

@@ -32,7 +32,7 @@ const Preloader = () => {
         transition={{ delay: 0.3, duration: 0.5 }}
         className="text-center relative z-10"
       >
-        <p className="text-xl font-display font-bold text-gray-900 dark:text-white mb-2 tracking-widest">NOCTRA</p>
+        <p className="text-xl font-display font-bold text-gray-900 dark:text-white mb-2 tracking-widest">FOLE</p>
         <p className="text-[10px] font-mono tracking-[0.3em] text-primary dark:text-primary-light uppercase">
           Afinando Frecuencias...
         </p>

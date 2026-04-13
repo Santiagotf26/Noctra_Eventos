@@ -1,104 +1,102 @@
-import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import { motion, useInView } from 'framer-motion';
+import { useRef } from 'react';
+import { Heart } from 'lucide-react';
 
-const categories = [
-  {
-    title: "Noctra Corporativo",
-    desc: "Convenciones de ventas, lanzamientos de producto, fiestas de fin de año, capacitaciones y activaciones de marca. Producción ejecutiva y audiovisual premium.",
-    img: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1000&q=80",
-    color: "from-blue-600/20 to-transparent",
-    hoverColor: "group-hover:text-blue-400"
-  },
-  {
-    title: "Noctra Social",
-    desc: "Realizamos eventos únicos e inolvidables: Bodas de lujo, Fiestas de 15 años y aniversarios con escenografías temáticas y música en vivo.",
-    img: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=1000&q=80",
-    color: "from-primary/20 to-transparent",
-    hoverColor: "group-hover:text-primary-light"
-  },
-  {
-    title: "Noctra Recreativo",
-    desc: "Momentos de diversión e integración masiva. Conciertos, festivales y celebraciones para el bienestar empresarial y entretenimiento a gran escala.",
-    img: "https://images.unsplash.com/photo-1533174000228-db8cb4fb76ac?auto=format&fit=crop&w=1000&q=80",
-    color: "from-accent/20 to-transparent",
-    hoverColor: "group-hover:text-accent-light"
-  }
+const events = [
+    {
+        title: "Gala Corporativa",
+        author: "by FOLE Pro",
+        price: "2.4k C",
+        likes: "12k",
+        img: "/service_tech_neon.png",
+        color: "from-primary/80"
+    },
+    {
+        title: "Boda de Lujo",
+        author: "by Event Studio",
+        price: "1.8k C",
+        likes: "9.2k",
+        img: "/g_decor_3.png",
+        color: "from-primary/50"
+    },
+    {
+        title: "Festival Electro",
+        author: "by SoundMax",
+        price: "4.5k C",
+        likes: "34k",
+        img: "/service_dj_neon.png",
+        color: "from-primary-dark/80"
+    },
+    {
+        title: "Activación de Marca",
+        author: "by Marketing VIP",
+        price: "1.2k C",
+        likes: "5.5k",
+        img: "/g_soc_2.png",
+        color: "from-primary-light/80"
+    }
 ];
 
 const EventTypes = () => {
-  return (
-    <section id="tipos-evento" className="py-24 md:py-32 bg-[#05050A] relative overflow-hidden transition-colors duration-500">
-      
-      {/* Background Orbs */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/10 rounded-full opacity-0 hidden pointer-events-none" />
+    const ref = useRef(null);
+    const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-      <div className="max-w-7xl mx-auto px-6 md:px-10 z-10 relative">
-        
-        {/* Header */}
-        <div className="text-center md:text-left mb-16 md:mb-24 flex flex-col md:flex-row justify-between items-end">
-          <div className="max-w-2xl">
-            <motion.h2 
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, ease: "easeOut" }}
-              className="text-3xl md:text-6xl font-display font-black tracking-tight text-white mb-6 uppercase"
-            >
-              Categorías de <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent">Eventos</span>
-            </motion.h2>
-            <motion.p 
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1, duration: 0.4, ease: "easeOut" }}
-              className="text-gray-400 text-lg leading-relaxed"
-            >
-              Nos adaptamos a la escala y tono de tu celebración. Ejecutamos de manera impecable cada evento asegurando una correcta operación logística.
-            </motion.p>
-          </div>
-        </div>
+    return (
+        <section ref={ref} className="py-20 relative max-w-[1400px] mx-auto px-6">
+            
+            <div className="text-center mb-16 flex flex-col items-center">
+                <div className="flex items-center gap-2 mb-6">
+                    <div className="w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(57,255,20,0.8)]" />
+                    <span className="text-white text-xs font-sans font-bold tracking-widest uppercase">Servicios Populares</span>
+                </div>
+                <motion.h2 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={isInView ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.6 }}
+                    className="font-display font-medium text-3xl md:text-5xl text-white tracking-tighter"
+                >
+                    Servicios Especializados
+                </motion.h2>
+            </div>
 
-        {/* Categories Stack */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-          {categories.map((cat, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              whileInView={{ opacity: 1, scale: 1, y: 0 }}
-              viewport={{ once: true, margin: "50px" }}
-              transition={{ delay: idx * 0.1, duration: 0.4, ease: "easeOut" }}
-              className="group relative h-[500px] md:h-[600px] rounded-[2rem] overflow-hidden cursor-pointer"
-            >
-              <div className="absolute inset-0 bg-black/60 z-10 transition-opacity duration-500 group-hover:bg-black/30" />
-              <div className={`absolute inset-0 bg-gradient-to-t via-black/50 to-black/90 from-black z-10 ${cat.color} mix-blend-multiply transition-colors duration-500`} />
-              
-              <img 
-                src={cat.img} 
-                alt={cat.title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110 saturate-50 group-hover:saturate-100"
-              />
-              
-              <div className="absolute inset-0 z-20 p-8 flex flex-col justify-end">
-                <div className="transform transition-transform duration-500 translate-y-6 group-hover:translate-y-0">
-                  <h3 className={`text-3xl font-display font-bold text-white mb-4 ${cat.hoverColor} transition-colors duration-300`}>
-                    {cat.title}
-                  </h3>
-                  <p className="text-gray-300 text-sm md:text-base leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">
-                    {cat.desc}
-                  </p>
-                </div>
-                
-                {/* Floating Icon */}
-                <div className="absolute top-8 right-8 w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center translate-x-4 -translate-y-4 opacity-0 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                  <ArrowUpRight className="text-white" />
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {events.map((ev, idx) => (
+                    <motion.div
+                        key={idx}
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={isInView ? { opacity: 1, y: 0 } : {}}
+                        transition={{ delay: idx * 0.15, duration: 0.6 }}
+                        className={`relative rounded-3xl overflow-hidden bg-[#0A0A0A] p-3 group border border-white/5 hover:border-primary/30 transition-colors ${idx === 1 ? 'transform md:-translate-y-6' : ''}`}
+                    >
+                        {/* Glow Behind Image */}
+                        <div className={`absolute top-0 inset-x-0 h-1/2 bg-gradient-to-b ${ev.color} opacity-10 blur-xl pointer-events-none group-hover:opacity-30 transition-opacity duration-500`} />
+                        
+                        <div className="relative w-full h-64 md:h-72 rounded-2xl overflow-hidden mb-4 bg-black">
+                            <img src={ev.img} alt={ev.title} className="w-full h-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-110" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0A] via-[#0A0A0A]/50 to-transparent opacity-90" />
+                        </div>
+                        
+                        <div className="px-2 pb-2 relative z-10">
+                            <div className="flex justify-between items-start mb-1">
+                                <div>
+                                    <h3 className="text-white font-display font-bold text-lg leading-tight group-hover:text-primary transition-colors">{ev.title}</h3>
+                                    <p className="text-gray-500 text-xs font-sans mt-2">{ev.author}</p>
+                                </div>
+                                <div className="text-right">
+                                    <div className="text-white font-mono font-bold text-xs bg-white/5 px-2 py-1 rounded border border-white/10">{ev.price}</div>
+                                    <div className="flex items-center gap-1 text-primary text-xs font-semibold mt-2 justify-end">
+                                        <Heart size={12} className="fill-primary" />
+                                        {ev.likes}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </motion.div>
+                ))}
+            </div>
+
+        </section>
+    );
 };
 
 export default EventTypes;

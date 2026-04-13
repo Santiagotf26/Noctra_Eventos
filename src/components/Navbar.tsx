@@ -2,101 +2,105 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+const FoleLogo = () => (
+  <svg viewBox="0 0 360 180" className="h-9 md:h-12 drop-shadow-[0_0_15px_rgba(57,255,20,0.3)]">
+    {/* Círculo Perimetral Verde (Esencia del original) */}
+    <circle cx="180" cy="90" r="85" stroke="#39FF14" strokeWidth="5" fill="none" opacity="0.8" />
+    
+    {/* FOLE - Texto Blanco con la O en Verde Neón para resaltar */}
+    <text x="180" y="105" textAnchor="middle" fill="#FFFFFF" fontFamily="Syne, sans-serif" fontWeight="900" fontSize="85" style={{ letterSpacing: '-4px' }}>
+      F<tspan fill="#39FF14" style={{ letterSpacing: '4px' }}>O</tspan>LE
+    </text>
 
+    {/* EVENTOS - Con fondo de contraste para legibilidad absoluta */}
+    <rect x="80" y="135" width="200" height="30" rx="15" fill="#000000" />
+    <text x="180" y="156" textAnchor="middle" fill="#39FF14" fontFamily="sans-serif" fontWeight="900" fontSize="18" letterSpacing="10">EVENTOS</text>
+  </svg>
+);
+
+export const Navbar = () => {
+  const [activeTab, setActiveTab] = useState('inicio');
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  // Scrollspy logic
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 20);
+    const handleScroll = () => {
+      const sections = ['inicio', 'servicios', 'trabajos', 'cotizador', 'contacto'];
+      let current = 'inicio';
+      const scrollY = window.scrollY;
+      for(const section of sections) {
+        const el = document.getElementById(section);
+        if (el && scrollY >= el.offsetTop - 300) {
+          current = section;
+        }
+      }
+      setActiveTab(current);
+    };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'INICIO', href: '#inicio' },
-    { name: 'PORTAFOLIO', href: '#portfolio' },
-    { name: 'SERVICIOS', href: '#servicios' },
+    { id: 'inicio', label: 'Inicio' },
+    { id: 'servicios', label: 'Servicios' },
+    { id: 'trabajos', label: 'Trabajos' },
+    { id: 'cotizador', label: 'Cotizador' },
+    { id: 'contacto', label: 'Contacto' }
   ];
 
   return (
-    <motion.div 
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className="fixed w-full top-0 z-50 px-4 pt-4 md:px-6 md:pt-6"
-    >
-      <nav className={`w-full max-w-7xl mx-auto rounded-2xl transition-all duration-500 overflow-hidden ${
-        scrolled 
-          ? 'py-3 px-4 md:px-6 bg-darker/60 backdrop-blur-2xl border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]' 
-          : 'py-4 px-4 md:px-6 bg-transparent border border-transparent'
-      }`}>
-        <div className="flex justify-between items-center relative z-10">
+    <>
+      <div className="fixed top-5 left-1/2 -translate-x-1/2 z-50 w-[92%] sm:w-auto transition-all duration-300">
+        
+        {/* PILL HEADER */}
+        <div className="bg-darker/80 backdrop-blur-xl border border-white/15 hover:border-primary/40 shadow-2xl rounded-full px-5 md:px-10 py-3 md:py-4 flex items-center justify-between md:justify-center gap-6 md:gap-12 transition-all relative z-50">
           
-          {/* Logo */}
-          <a href="#inicio" className="text-xl md:text-2xl font-display font-bold tracking-wider text-white uppercase drop-shadow-[0_0_10px_rgba(255,255,255,0.3)] hover:text-primary transition-colors">
-            NOCTRA
+          <a href="#inicio" className="flex items-center" onClick={() => setMenuOpen(false)}>
+             <FoleLogo />
           </a>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="text-[13px] font-medium tracking-[0.15em] text-gray-300 hover:text-white transition-colors duration-300 relative group"
+          <nav className="hidden lg:flex items-center gap-8">
+            {navLinks.map((tab) => (
+              <a 
+                key={tab.id} 
+                href={`#${tab.id}`}
+                className={`font-sans text-[12px] font-extrabold uppercase tracking-[0.25em] transition-all duration-300 ${activeTab === tab.id ? 'text-primary' : 'text-gray-400 hover:text-white'}`}
               >
-                {link.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary group-hover:w-full transition-all duration-300 shadow-[0_0_10px_rgba(124,58,237,0.8)]" />
+                {tab.label}
               </a>
             ))}
-            {/* Removed Theme Toggle Button */}
-            
-            <a
-              href="https://wa.me/573114971131?text=Hola,%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20eventos."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-2.5 rounded-xl bg-primary/80 hover:bg-primary/40 backdrop-blur-md border border-primary/50 text-white font-semibold text-[13px] tracking-[0.1em] transition-all duration-300 shadow-[0_4px_15px_rgba(124,58,237,0.3)] hover:shadow-[0_0_25px_rgba(124,58,237,0.6)]"
-            >
-              RESERVAR
-            </a>
-          </div>
+          </nav>
 
-          {/* Mobile Right Controls */}
-          <div className="flex md:hidden items-center gap-4">
-            <button
-              className="text-gray-300 hover:text-white"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen ? <X size={26} /> : <Menu size={26} />}
-            </button>
-          </div>
+          <button className="lg:hidden w-10 h-10 flex items-center justify-center bg-white/5 rounded-full text-white" onClick={() => setMenuOpen(!menuOpen)}>
+             {menuOpen ? <X size={22} className="text-primary"/> : <Menu size={22} />}
+          </button>
         </div>
 
-        {/* Mobile Menu */}
+        {/* MOBILE MENU DROPDOWN - SLIDE DOWN ANIMATION */}
         <AnimatePresence>
-          {isOpen && (
+          {menuOpen && (
             <motion.div 
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="md:hidden mt-4 pt-6 border-t border-gray-200 dark:border-white/10 flex flex-col items-center space-y-6 pb-6 relative z-0"
+              initial={{ opacity: 0, y: -20, transformOrigin: 'top center' }}
+              animate={{ opacity: 1, y: 10 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="absolute top-full left-0 w-full bg-darker/95 backdrop-blur-2xl border border-white/10 rounded-[2rem] p-4 flex flex-col gap-1 lg:hidden shadow-[0_20px_50px_rgba(0,0,0,0.8)] z-40 origin-top"
             >
-              {navLinks.map((link) => (
-                <a key={link.name} href={link.href} onClick={() => setIsOpen(false)}
-                  className="text-base font-medium text-gray-300 hover:text-white tracking-[0.15em]">
-                  {link.name}
-                </a>
+               {navLinks.map((tab) => (
+                  <a 
+                      key={tab.id}
+                      href={`#${tab.id}`} 
+                      onClick={() => setMenuOpen(false)} 
+                      className={`font-sans text-sm font-black w-full text-center py-4 rounded-2xl transition-all ${activeTab === tab.id ? 'bg-primary/15 text-primary' : 'text-gray-300 active:bg-white/5'}`}
+                  >
+                      {tab.label}
+                  </a>
               ))}
-              <a href="https://wa.me/573114971131?text=Hola,%20quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20eventos." target="_blank" rel="noopener noreferrer"
-                onClick={() => setIsOpen(false)}
-                className="px-8 py-3 rounded-xl bg-primary text-white font-semibold tracking-[0.1em] shadow-[0_4px_15px_rgba(124,58,237,0.4)]">
-                RESERVAR AHORA
-              </a>
             </motion.div>
           )}
         </AnimatePresence>
-      </nav>
-    </motion.div>
+      </div>
+    </>
   );
 };
 

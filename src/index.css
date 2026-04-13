@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,35 +6,32 @@
 
 @layer base {
   body {
-    @apply bg-gray-50 dark:bg-darker text-gray-900 dark:text-gray-200 font-sans antialiased overflow-x-hidden transition-colors duration-500;
+    @apply bg-darker text-gray-200 font-sans antialiased overflow-x-hidden;
   }
+  
   ::selection {
-    background: rgba(124, 58, 237, 0.3);
-    color: #fff;
+    background: rgba(57, 255, 20, 0.4);
+    color: white;
   }
 }
 
 @layer utilities {
-  .text-gradient {
-    background: linear-gradient(135deg, #7C3AED, #E81CFF, #A78BFA);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+  .text-primary-gradient {
+    background: linear-gradient(to right, #ffffff 40%, #39FF14 100%);
+    @apply bg-clip-text text-transparent;
   }
-  .section-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 0.75rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    @apply text-primary dark:text-[#A78BFA];
-  }
+  
   .glass-card {
-    @apply bg-white/70 dark:bg-surface/40 backdrop-blur-xl border border-gray-200 dark:border-white/10 shadow-[0_8px_30px_rgba(0,0,0,0.04)] dark:shadow-[0_8px_32px_rgba(0,0,0,0.5)];
+    @apply bg-[#0C0C0C]/80 backdrop-blur-md border border-white/5;
+  }
+  
+  .glass-card-hover {
+    @apply transition-colors duration-300 hover:bg-[#141414]/90 hover:border-[#39FF14]/20;
   }
 }
 
 /* Scrollbar */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { @apply bg-gray-100 dark:bg-[#060610]; }
-::-webkit-scrollbar-thumb { background: #7C3AED; border-radius: 4px; }
-::-webkit-scrollbar-thumb:hover { background: #A78BFA; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { @apply bg-darker; }
+::-webkit-scrollbar-thumb { @apply bg-surface2 rounded-full; }
+::-webkit-scrollbar-thumb:hover { @apply bg-primary; }
